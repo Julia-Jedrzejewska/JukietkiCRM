@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('order_status')->nullable();
-            $table->integer('price')->nullable();
-            $table->string('what_ordered')->nullable();
-            $table->date('start_date')->nullable();
+            $table->foreignId('client_id')->nullable()->constrained('clients')->onDelete('set null');
+            $table->enum('order_status', ['nowe','w realizacji', 'zrealizowane', 'anulowane'])->default('nowe');
+            $table->decimal('price', 8, 2);
+            $table->string('order_items');
+            $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->text('comment')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->integer('price')->nullable();
-            $table->string('for_what')->nullable();
+            $table->decimal('price', 8, 2);
+            $table->string('for_what');
             $table->longText('link')->nullable();
+            $table->date('date');
+            $table->timestamps();
         });
     }
 

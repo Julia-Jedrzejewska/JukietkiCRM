@@ -10,7 +10,8 @@ class Expense extends Model
     protected $fillable = [
         'price',
         'for_what',
-        'link'
+        'link',
+        'date'
     ];
 
 }

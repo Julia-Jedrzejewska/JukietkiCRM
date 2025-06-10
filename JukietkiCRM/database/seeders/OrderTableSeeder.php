@@ -21,7 +21,7 @@ class OrderTableSeeder extends Seeder
                 'order_items' => $faker->text,
                 'start_date' => $faker->date(),
                 'end_date' => $faker->date(),
-                'comment' => $faker->sentence,
+                'comment' => $faker->text,
             ]);
         }
 

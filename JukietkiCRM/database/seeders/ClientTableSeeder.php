@@ -16,7 +16,8 @@ class ClientTableSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < 50; $i++) {
             \App\Models\Client::create([
-                'name_surname' => $faker->name,
+                'name' => $faker->firstName,
+                'surname' => $faker->lastName,
                 'phone_number' => $faker -> phoneNumber,
                 'email' => $faker -> email,
                 'address' => $faker -> address,

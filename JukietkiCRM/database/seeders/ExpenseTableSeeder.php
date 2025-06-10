@@ -16,9 +16,10 @@ class ExpenseTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++){
             \App\Models\Expense::create([
                 'price' => $faker->randomFloat(2, 10, 100),
-                'for_what' => $faker->randomElement(['róża','stokrotka','pełny bukiet']),
+                'category' => $faker->randomElement(['promocja_firmy', 'materiały', 'inne']),
                 'link' => $faker->url,
                 'date' => $faker->date(),
+                'comment' => $faker->text(),
             ]);
         }
 

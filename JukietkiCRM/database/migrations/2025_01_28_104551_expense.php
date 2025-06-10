@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->decimal('price', 8, 2);
-            $table->string('for_what');
+            $table->enum('category', ['promocja_firmy', 'materiały', 'inne'])->default('inne');
             $table->longText('link')->nullable();
             $table->date('date');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

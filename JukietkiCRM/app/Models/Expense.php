@@ -3,15 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\ExpanseCategory;
 
 class Expense extends Model
 {
     protected $table = 'expenses';
     protected $fillable = [
         'price',
-        'for_what',
+        'category' => ExpanseCategory::class,
         'link',
-        'date'
+        'date' => 'date',
+        'comment',
     ];
 
 }

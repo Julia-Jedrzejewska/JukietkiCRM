@@ -5,3 +5,20 @@
 *{
     font-family: Serif;
 }
+.nav-item{
+    @apply
+    float-right
+    h-[100%]
+    bg-purple4
+    inline-block
+    p-7
+    hover:bg-purple5
+    transition-all
+    duration-150
+    cursor-pointer
+    border-b-0
+    hover:border-b-4
+    hover:border-white
+    text-white
+    text-[28px]
+}

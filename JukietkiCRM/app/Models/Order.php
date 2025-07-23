@@ -12,11 +12,10 @@ class Order extends Model
     protected $table = 'orders';
     protected $fillable = [
         'client_id',
-        'order_status' => OrderStatus::class,
-        'price' => 'decimal:2',
+        'order_status',
+        'price',
         'order_items',
-        'start_date' => 'date',
-        'end_date' => 'date',
+        'end_date',
         'comment',
     ];
     public function client(): BelongsTo{

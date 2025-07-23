@@ -10,9 +10,9 @@ class Expense extends Model
     protected $table = 'expenses';
     protected $fillable = [
         'price',
-        'category' => ExpanseCategory::class,
+        'category',
         'link',
-        'date' => 'date',
+        'date',
         'comment',
     ];
 

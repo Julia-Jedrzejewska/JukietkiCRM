@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderRequest;
+use App\Models\Client;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OrderController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('order.index');
+        $orders = Order::with('client')->paginate(10)->onEachSide(1);
+        return view('order.index', compact('orders'));
     }
 
     /**
@@ -19,15 +24,17 @@ class OrderController
      */
     public function create()
     {
-        //
+        return view('order.create', ['clients' => Client::all()]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
-        //
+        $data = $request->validated();
+        Order::create($data);
+        return redirect()->route('orders.index')->with('success', 'Zamówienie utworzone.');
     }
 
     /**
@@ -57,8 +64,9 @@ class OrderController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('orders.index');
     }
 }

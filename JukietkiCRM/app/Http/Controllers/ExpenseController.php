@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ExpanseCategory;
+use App\Http\Requests\StoreExpenseRequest;
+use App\Models\Expense;
 use Illuminate\Http\Request;
 
 class ExpenseController
@@ -11,7 +14,8 @@ class ExpenseController
      */
     public function index()
     {
-        return view('expense.index');
+        $expenses = Expense::query()->paginate(10)->onEachSide(1);
+        return view('expense.index', compact('expenses'));
     }
 
     /**
@@ -19,15 +23,17 @@ class ExpenseController
      */
     public function create()
     {
-        //
+        return view('expense.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreExpenseRequest $request)
     {
-        //
+        $data = $request->validated();
+        Expense::create($data);
+        return redirect()->route('expenses.index')->with('success', 'Dodano nowy rekord');
     }
 
     /**
@@ -57,8 +63,9 @@ class ExpenseController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+        return redirect()->route('expenses.index');
     }
 }

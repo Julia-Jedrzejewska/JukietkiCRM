@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->nullable()->constrained('clients')->onDelete('set null');
             $table->enum('order_status', ['nowe','w realizacji', 'zrealizowane', 'anulowane'])->default('nowe');
-            $table->decimal('price', 8, 2);
+            $table->decimal('price', 8, 2)->default(0.00);
             $table->string('order_items');
-            $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->text('comment')->nullable();
             $table->timestamps();

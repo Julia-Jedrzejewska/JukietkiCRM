@@ -19,7 +19,7 @@ class ExpenseTableSeeder extends Seeder
                 'category' => $faker->randomElement(['promocja_firmy', 'materiały', 'inne']),
                 'link' => $faker->url,
                 'date' => $faker->date(),
-                'comment' => $faker->text(),
+                'comment' => $faker->words(3,true),
             ]);
         }
 

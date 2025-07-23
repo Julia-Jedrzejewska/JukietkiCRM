@@ -18,10 +18,9 @@ class OrderTableSeeder extends Seeder
                 'client_id' => $faker->numberBetween(1,40),
                 'order_status' => $faker->randomElement(['nowe','w realizacji', 'zrealizowane', 'anulowane']),
                 'price' => $faker->randomFloat(2, 10, 100),
-                'order_items' => $faker->text,
-                'start_date' => $faker->date(),
+                'order_items' => $faker->words(3, true),
                 'end_date' => $faker->date(),
-                'comment' => $faker->text,
+                'comment' => $faker->words(3, true),
             ]);
         }
 

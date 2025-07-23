@@ -21,7 +21,7 @@ class ClientTableSeeder extends Seeder
                 'phone_number' => $faker -> phoneNumber,
                 'email' => $faker -> email,
                 'address' => $faker -> address,
-                'comment' => $faker -> sentence,
+                'comment' => $faker -> words(3, true),
             ]);
         }
 

@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 
 class StoreOrderRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }

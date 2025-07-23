@@ -3,26 +3,36 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreExpenseRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+
     public function rules(): array
     {
         return [
-            //
+            'category' => ['required', Rule::in(['promocja_firmy', 'materiały', 'inne'])],
+            'price' => 'required|numeric',
+            'link' => 'nullable',
+            'date' => 'nullable|date',
+            'comment' => 'nullable',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'category.required' => 'Pole kategoria jest wymagane.',
+            'category.in' => 'Pole kategoria jest niepoprawne.',
+            'price.required' => 'Pole cena jest wymagane.',
+            'price.numeric' => 'Pole cena jest niepoprawne.',
+            'date.date' => 'Pole data jest niepoprawne.',
         ];
     }
 }

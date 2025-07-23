@@ -28,11 +28,10 @@ class StoreExpenseRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'category.required' => 'Pole kategoria jest wymagane.',
-            'category.in' => 'Pole kategoria jest niepoprawne.',
-            'price.required' => 'Pole cena jest wymagane.',
-            'price.numeric' => 'Pole cena jest niepoprawne.',
-            'date.date' => 'Pole data jest niepoprawne.',
+            'in' => 'Wartość tego pola jest niepoprawna.',
+            'required' => 'To pole jest wymagane.',
+            'numeric' => 'Wartość tego pola jest niepoprawna.',
+            'date' => 'Wartość tego pola jest niepoprawna.',
         ];
     }
 }

@@ -16,7 +16,7 @@ class StoreOrderRequest extends FormRequest
     {
         return [
                 'client_id' => 'required|numeric|exists:clients,id',
-                'order_status' => [Rule::in(['nowe', 'w realizacji', 'zrealizowane', 'anulowane'])],
+                'order_status' => ['required', Rule::in(['nowe', 'w realizacji', 'zrealizowane', 'anulowane'])],
                 'price' => 'required|numeric',
                 'order_items' => 'required',
                 'end_date' => 'nullable|date',
@@ -26,14 +26,12 @@ class StoreOrderRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'client_id.required' => 'Pole kilent jest wymagane',
-            'client_id.numeric' => 'Pole kilent jest niepoprawne',
-            'client_id.exists' => 'Podany klient nie istnieje',
-            'order_status.in' => 'Wartość pola status jest nieprawidłowa',
-            'price.required' => 'Pole cena jest wymagane',
-            'price.numeric' => 'Pole cena jest niepoprawne',
-            'order_items.required' => 'Pole zamówienie jest wymagane',
-            'end_date.date' => 'Pole data jest niepoprawne',
+            'required' => 'To pole jest wymagane.',
+            'price.numeric' => 'To pole powinno być liczbą.',
+            'client_id.numeric' => 'Wartość tego pola jest niepoprawna.',
+            'exists' => 'Podany klient nie istnieje.',
+            'in' => 'Wartość tego pola jest niepoprawna.',
+            'date' => 'Wartość tego pola jest niepoprawna.',
         ];
     }
 }

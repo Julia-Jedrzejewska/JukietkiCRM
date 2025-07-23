@@ -26,9 +26,10 @@ class StoreClientRequest extends FormRequest
     public function messages(): array
     {
         return [
-          'name.required' => "Pole imię jest wymagane",
-            'phone_number.unique' => 'Podany numer telefonu już istnieje',
-            'email.unique' => 'Podany email już istnieje',
+          'required' => "To pole jest wymagane.",
+            'phone_number.unique' => 'Podany numer telefonu już istnieje.',
+            'email.unique' => 'Podany email już istnieje.',
+            'email' => 'Podany adres email jest niepoprawny.',
         ];
     }
 }
